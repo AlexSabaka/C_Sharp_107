@@ -8,29 +8,29 @@ using LessonFour;
 // N! = 1 * 2 * ... * (N - 1) * N
 // N! = (N - 1)! * N
 
-//int factorial_for(int n)
-//{
-//    int result = 1;
-//    for (int i = 1; i <= n; i++)
-//    {
-//        result *= i;
-//    }
-//    return result;
-//}
+int factorial_for(int n)
+{
+    int result = 1;
+    for (int i = 1; i <= n; i++)
+    {
+        result *= i;
+    }
+    return result;
+}
 
-//int factorial_recursive(int n) => n == 1 ? 1 : factorial_recursive(n - 1) * n;
+int factorial_recursive(int n) => n == 1 ? 1 : factorial_recursive(n - 1) * n;
 
-//// f(x) = sin(x) * x^2
-//double HereIsTheNameOfTheFunction(double hereIsAnArgument)
-//    => Math.Sin(hereIsAnArgument) * Math.Pow(hereIsAnArgument, 2);
+// f(x) = sin(x) * x^2
+double HereIsTheNameOfTheFunction(double hereIsAnArgument)
+    => Math.Sin(hereIsAnArgument) * Math.Pow(hereIsAnArgument, 2);
 
-//double FunctionWithCurlyBrackets(double x)
-//{
-//    return Math.Sin(x) * Math.Pow(x, 2);
-//}
+double FunctionWithCurlyBrackets(double x)
+{
+    return Math.Sin(x) * Math.Pow(x, 2);
+}
 
-//Console.WriteLine($"5! = {factorial_for(5)}");
-//Console.WriteLine($"5! = {factorial_recursive(5)}");
+Console.WriteLine($"5! = {factorial_for(5)}");
+Console.WriteLine($"5! = {factorial_recursive(5)}");
 
 void Calculator_NotGood()
 {
