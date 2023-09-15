@@ -1,5 +1,7 @@
 ﻿// This is a class that will be run first after program starts
 // Цей клас містить ментод який буде виконано першим
+using System.Runtime.InteropServices;
+
 class Program
 {
     // Method that would be run
