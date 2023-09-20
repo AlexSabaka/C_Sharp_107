@@ -1,11 +1,47 @@
 ﻿using System.Text;
 
-namespace Lesson_9_Text_And_Files
+namespace Lesson_11_Classes_And_OOP
 {
+    class Person
+    {
+        public const string UnknownPersonName = "Noname";
+
+        private string _firstName; // Field - Поля
+        public string FirstName // Property (full property) - властивість
+        {
+            get
+            {
+                return _firstName;
+            }
+            set // (value)
+            {
+                _firstName = value == null ? UnknownPersonName : value;
+            }
+        }
+
+        public string LastName { get; init; } // Property (short)
+
+        public string Phone { get; init; } // Property
+
+        public DateTime BirthDate { get; init; } // Property
+
+        public Person(Person otherPerson, string newFirstName = null, string newLastName = null, string newPhone = null, DateTime? newBirthDate = null)
+        {
+            FirstName = newFirstName ?? otherPerson.FirstName; // null coalescent operator
+            LastName = newLastName ?? otherPerson.LastName;
+            Phone = newPhone ?? otherPerson.Phone;
+            BirthDate = newBirthDate ?? otherPerson.BirthDate;
+        }
+
+        public Person()
+        {
+        }
+    }
+
     internal class Program
     {
         static string database = "db.txt";
-        static (string name, string phone, DateTime birth)[] contacts;
+        static Person[] contacts;
 
         static void Main(string[] args)
         {
@@ -47,8 +83,12 @@ namespace Lesson_9_Text_And_Files
             {
                 try
                 {
-                    input = ulong.Parse(Console.ReadLine(), System.Globalization.CultureInfo.GetCultureInfo("en-US"));
-                    tryAgain = false;
+                    string stringInput = Console.ReadLine();
+                    if (stringInput != null)
+                    {
+                        input = ulong.Parse(stringInput, System.Globalization.CultureInfo.GetCultureInfo("en-US"));
+                        tryAgain = false;
+                    }
                 }
                 catch (FormatException)
                 {
@@ -104,15 +144,24 @@ namespace Lesson_9_Text_And_Files
             try
             {
                 Console.Write("Enter date of birth: ");
-                date = DateTime.Parse(Console.ReadLine()); // mm/dd/yyyy - 
+                date = DateTime.Parse(Console.ReadLine()); // mm/dd/yyyy
             }
             catch (FormatException)
             {
                 Console.WriteLine("Sorry, wrong format. Date of birth set to default value.");
             }
 
+            // immutability
+            Person person = new Person() // instantiation
+            {
+                BirthDate = date,
+                LastName = name,
+                FirstName = null,
+                Phone = phone,
+            };
+
             Array.Resize(ref contacts, contacts.Length + 1);
-            contacts[^1] = (name, phone, date);
+            contacts[^1] = person;
         }
 
         static void EditContact()
@@ -124,8 +173,10 @@ namespace Lesson_9_Text_And_Files
                 return;
             }
 
-            Console.Write("Enter name: ");
-            string name = Console.ReadLine();
+            Console.Write("Enter first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Enter last name: ");
+            string lastName = Console.ReadLine();
             Console.Write("Enter phone: ");
             string phone = Console.ReadLine();
             DateTime date = DateTime.Now;
@@ -139,7 +190,7 @@ namespace Lesson_9_Text_And_Files
                 Console.WriteLine("Sorry, wrong format. Date of birth set to default value.");
             }
 
-            contacts[id] = (name, phone, date);
+            contacts[id] = new Person(contacts[id], firstName, lastName, phone, date);
         }
 
         static int SearchContact()
@@ -149,10 +200,11 @@ namespace Lesson_9_Text_And_Files
 
             for (int i = 0; i < contacts.Length; ++i)
             {
-                if (contacts[i].name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
-                    contacts[i].phone.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
+                if (contacts[i].FirstName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                    contacts[i].LastName.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+                    contacts[i].Phone.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))
                 {
-                    Console.WriteLine($"#{i+1}: {contacts[i].name}, {contacts[i].phone}, {contacts[i].birth}");
+                    Console.WriteLine($"#{i + 1}: {contacts[i].FirstName}, {contacts[i].Phone}, {contacts[i].BirthDate}");
                     return i;
                 }
             }
@@ -163,17 +215,17 @@ namespace Lesson_9_Text_And_Files
         {
             for (int i = 0; i < contacts.Length; i++)
             {
-                int age = DateTime.Now.Year - contacts[i].birth.Year;
-                Console.WriteLine($"#{i + 1}: Name: {contacts[i].Item1}, Phone: {contacts[i].Item2}, Age: {age}");
+                int age = DateTime.Now.Year - contacts[i].BirthDate.Year;
+                Console.WriteLine($"#{i + 1}: Name: {contacts[i].FirstName} {contacts[i].LastName}, Phone: {contacts[i].Phone}, Age: {age}");
             }
         }
 
-        static (string name, string phone, DateTime date)[] ConvertStringsToContacts(string[] records)
+        static Person[] ConvertStringsToContacts(string[] records)
         {
             // records:
             // "name,phone,date of birth"
             // Oleksii,+38090873928,30.03.1993
-            var contacts = new (string name, string phone, DateTime date)[records.Length];
+            var contacts = new Person[records.Length];
             for (int i = 0; i < records.Length; ++i)
             {
                 string[] array = records[i].Split(','); // "Oleksii", "+38090873928", "30.03.1993"
@@ -182,9 +234,14 @@ namespace Lesson_9_Text_And_Files
                     Console.WriteLine($"Line #{i + 1}: '{records[i]}' cannot be parsed");
                     continue;
                 }
-                contacts[i].name = array[0];
-                contacts[i].phone = array[1];
-                contacts[i].date = DateTime.Parse(array[2]);
+
+                contacts[i] = new Person
+                {
+                    FirstName = array[0],
+                    LastName = Person.UnknownPersonName,
+                    Phone = array[1],
+                    BirthDate = DateTime.Parse(array[2]),
+                };
             }
             return contacts;
         }
@@ -194,7 +251,7 @@ namespace Lesson_9_Text_And_Files
             string[] lines = new string[contacts.Length];
             for (int i = 0; i < lines.Length; i++)
             {
-                lines[i] = $"{contacts[i].Item1},{contacts[i].Item2},{contacts[i].Item3}";
+                lines[i] = $"{contacts[i].FirstName} {contacts[i].LastName},{contacts[i].Phone},{contacts[i].BirthDate}";
             }
             File.WriteAllLines(database, lines);
         }
