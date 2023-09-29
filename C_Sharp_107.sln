@@ -27,7 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson_12", "Lesson_12\Less
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson_12_Inheritance_And_Polymorphism", "Lesson_12_Inheritance_And_Polymorphism\Lesson_12_Inheritance_And_Polymorphism.csproj", "{9F52E7B3-A03C-4339-86C1-A776FA946F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_13_Abstraction_And_Interfaces", "Lesson_13_Abstraction_And_Interfaces\Lesson_13_Abstraction_And_Interfaces.csproj", "{5968A6EC-1F7F-4966-875B-FFA7E1D6F8E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lesson_13_Abstraction_And_Interfaces", "Lesson_13_Abstraction_And_Interfaces\Lesson_13_Abstraction_And_Interfaces.csproj", "{5968A6EC-1F7F-4966-875B-FFA7E1D6F8E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_14_Structs", "Lesson_14_Structs\Lesson_14_Structs.csproj", "{652381A4-9040-440F-BA9A-B30FA26E1220}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{5968A6EC-1F7F-4966-875B-FFA7E1D6F8E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5968A6EC-1F7F-4966-875B-FFA7E1D6F8E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5968A6EC-1F7F-4966-875B-FFA7E1D6F8E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{652381A4-9040-440F-BA9A-B30FA26E1220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{652381A4-9040-440F-BA9A-B30FA26E1220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{652381A4-9040-440F-BA9A-B30FA26E1220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{652381A4-9040-440F-BA9A-B30FA26E1220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
