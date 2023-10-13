@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_18_Extensions", "Les
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_19_LINQ", "Lesson_19_LINQ\Lesson_19_LINQ.csproj", "{F7EEAB1C-2D34-45C8-BC33-012173A96362}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_20_Reflection", "Lesson_20_Reflection\Lesson_20_Reflection.csproj", "{07703022-FE40-4A9A-BD9B-4AA96E73C758}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -117,6 +119,10 @@ Global
 		{F7EEAB1C-2D34-45C8-BC33-012173A96362}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7EEAB1C-2D34-45C8-BC33-012173A96362}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7EEAB1C-2D34-45C8-BC33-012173A96362}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07703022-FE40-4A9A-BD9B-4AA96E73C758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07703022-FE40-4A9A-BD9B-4AA96E73C758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07703022-FE40-4A9A-BD9B-4AA96E73C758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07703022-FE40-4A9A-BD9B-4AA96E73C758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
