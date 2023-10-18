@@ -1,0 +1,5 @@
+<ThisIsMyFile>
+    <AndThisIsAnOtherTag name="some name">
+        <Text>Some other text</Text>
+    </AndThisIsAnOtherTag>
+</ThisIsMyFile>

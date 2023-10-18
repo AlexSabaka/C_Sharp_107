@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Library xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Books>
+    <Book>
+      <Title>Harry Potter</Title>
+      <Year>1997</Year>
+      <Author>
+        <Name>J. Rolling</Name>
+        <Age>50</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+    <Book>
+      <Title>Awesome Book</Title>
+      <Year>2023</Year>
+      <Author>
+        <Name>Oleksii</Name>
+        <Age>29</Age>
+        <Phone>1234567890</Phone>
+      </Author>
+    </Book>
+  </Books>
+</Library>
