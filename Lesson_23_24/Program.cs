@@ -17,9 +17,18 @@ async void SomeOtherMethodAsync()
 async Task SomeMethodAsync(CancellationToken cancellationToken)
 {
     await Task.Delay(1000);
-    if (cancellationToken.IsCancellationRequested) {
-        return;
-    }
+    // So, turns out I did a terribly stupid mistake here. See
+    // what I've done with silent way of treating cancellation
+    // request? When the tokenSource.Cancel() get's triggered
+    // immediately after task being launched the method just
+    // silently exits, so we don't catch any Exception, because
+    // there were none 😭
+    // if (cancellationToken.IsCancellationRequested) {
+    //     return;
+    // }
+    // If I replace it with ThrowIfCancellationRequested 
+    // everything gonna work as intended, go see it yourself
+    cancellationToken.ThrowIfCancellationRequested();
 
     await Task.Delay(1000);
     cancellationToken.ThrowIfCancellationRequested();
