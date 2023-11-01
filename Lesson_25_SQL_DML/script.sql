@@ -22,9 +22,17 @@ alter table public.students add constraint students_project_fk foreign key (fina
 
 insert into public.students (name, birth_date) values
   ('Oleksii Kruhlyk', '03/30/1994'),
-  ('',);
+  ('', '');
 
 insert into public.projects (student_id, description) values
   (1, '');
 
-select * from public.students where ____ top 10 limit 10 
+select * from public.students where ____ top 10 limit 10
+
+
+alter table public.students add column first_name varchar(100),
+                            add column last_name varchar(100);
+
+
+update public.students set first_name = SPLIT_PART(name, ' ', 1),
+                           last_name = SPLIT_PART(name, ' ', -1);

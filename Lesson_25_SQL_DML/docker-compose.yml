@@ -1,4 +1,4 @@
-# YAML
+# YAML - IaaC (Infrastructure as a Code)
 
 version: '3.5'
 
@@ -39,5 +39,5 @@ networks:
     driver: bridge
 
 volumes:
-    postgres:
-    pgadmin:
+  postgres:
+  pgadmin:
