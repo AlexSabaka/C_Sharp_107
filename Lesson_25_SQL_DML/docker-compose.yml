@@ -1,5 +1,7 @@
 # YAML - IaaC (Infrastructure as a Code)
 
+# docker-compose up -d
+
 version: '3.5'
 
 services:
