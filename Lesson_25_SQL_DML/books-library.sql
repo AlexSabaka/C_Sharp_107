@@ -29,7 +29,29 @@ create table if not exists public.books (
 	title varchar(1000) not null,
 	publish_date date not null,
 	publisher_id integer references public.publishers(id),
-	author_id integer references public.authors(id) not null
+	author_id integer references public.authors(id) not null,
+	-- count_in_stock integer, -- Possible values: NULL, 0, -1, 1, ...
+	-- in_stock boolean
+);
+
+create table if not exists public.books_in_stock (
+	id serial primary key,
+	book_id integer references public.books(id),
+	count integer not null
+);
+
+-- TODO: Complete table definition
+create table if not exists public.customers (
+	id serial primary key
+);
+
+-- NOTE: This isn't a fully working example. You should 
+create table if not exists public.orders_history (
+	id serial primary key,
+	borrower_customer_id integer references public.customers(id),
+	book_id integer references public.books(id),
+	borrow_date datetime not null,
+	return_date datetime
 );
 
 -- insert into public.countries(name, code) values
