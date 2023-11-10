@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Page</title>
+    <style>
+        #boxes {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px 10px;
+            background-color: aqua;
+        }
+
+        .clicked {
+            background-color: red;
+        }
+    </style>
+    <script>
+        let numbers = 0; // -1, 1, Inf, -Inf, NaN, 0.1, ....
+        let str1 = "Hello!";
+        let str2 = 'Hello!';
+        let str3 = `Hello! ${numbers}, ${str1}`;
+
+        const arr1 = [1, 2, "three", [4, 5]];
+        const arr2 = [];
+        arr2.push(1);
+        arr2.push(3);
+        arr2.push(4);
+        const arr3 = arr1.concat(arr2);
+        const arr4 = [ ...arr1, ...arr2 ];
+
+        const personObject = {
+            id: 123455,
+            name: "Oleksii",
+            surname: "Kruhlyk",
+        };
+
+        const addressObject = {
+            country: "UA",
+            city: "Sarny",
+            person_id: 123455,
+        };
+
+        const combinedObject = {
+            ...personObject,
+            ...addressObject,
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const boxes = document.getElementsByClassName("box");
+            for (let i = 0; i < boxes.length; ++i) {
+                boxes.item(i).addEventListener("click", function (e) {
+                    e.target.classList.toggle("clicked");
+                });
+            }
+
+            const h1 = document.getElementById("title");
+            setTimeout(function () {
+                h1.innerText = "Hello to my not so awesome page :(";
+            }, 5000);
+        });
+
+        document.addEventListener("mousemove", function (e) {
+            const h2 = document.getElementById("mouse_pos");
+            h2.innerText = `X: ${e.clientX}, Y: ${e.clientY}`;
+        });
+
+    </script>
+</head>
+<body>
+    <h1 id="title">Hello to my awesome page!</h1>
+    <h2 id="mouse_pos">Its really cool looking page!</h2>
+    <div id="boxes">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+</body>
+</html>
