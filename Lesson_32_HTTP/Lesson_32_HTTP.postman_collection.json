@@ -1,0 +1,580 @@
+{
+	"info": {
+		"_postman_id": "bc2bee70-8f0e-4434-8dd0-97fce3a330bf",
+		"name": "Lesson_32_HTTP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/Persons",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "/api/Persons/:id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Persons/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Persons",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-96912074",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": -86367164,\n  \"firstName\": \"sit anim fugiat\",\n  \"lastName\": \"anim magna\",\n  \"dob\": \"1944-08-15T12:29:24.733Z\",\n  \"verified\": false,\n  \"email\": \"dolor do\",\n  \"age\": -50368137\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "-96912074"
+								}
+							]
+						},
+						{
+							"name": "/api/Persons/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"irure mollit\",\n  \"lastName\": \"commodo ad velit\",\n  \"dob\": \"1967-08-11T14:37:49.081Z\",\n  \"verified\": true,\n  \"email\": \"pariat\",\n  \"age\": -58571417\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Persons/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Persons",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-96912074",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"irure mollit\",\n  \"lastName\": \"commodo ad velit\",\n  \"dob\": \"1967-08-11T14:37:49.081Z\",\n  \"verified\": true,\n  \"email\": \"pariat\",\n  \"age\": -58571417\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"updatedFields\": [\n    \"anim\",\n    \"e\"\n  ]\n}"
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"irure mollit\",\n  \"lastName\": \"commodo ad velit\",\n  \"dob\": \"1967-08-11T14:37:49.081Z\",\n  \"verified\": true,\n  \"email\": \"pariat\",\n  \"age\": -58571417\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "-96912074"
+								},
+								{
+									"name": "Server Error",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"firstName\": \"irure mollit\",\n  \"lastName\": \"commodo ad velit\",\n  \"dob\": \"1967-08-11T14:37:49.081Z\",\n  \"verified\": true,\n  \"email\": \"pariat\",\n  \"age\": -58571417\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"adipisicing ut aliquip ut voluptate\"\n}"
+								}
+							]
+						},
+						{
+							"name": "/api/Persons/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Persons/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Persons",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "-96912074",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Not Found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/Persons/:id",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"Persons",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "-96912074",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "-96912074"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/api/Persons",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/Persons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Persons"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/api/Persons",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Persons"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": -55832817,\n    \"firstName\": \"id ipsum\",\n    \"lastName\": \"r\",\n    \"dob\": \"1970-06-15T12:29:37.250Z\",\n    \"verified\": true,\n    \"email\": \"enim cillum ut aliqua\",\n    \"age\": 61464036\n  },\n  {\n    \"id\": 73262245,\n    \"firstName\": \"et i\",\n    \"lastName\": \"labore Excepteur\",\n    \"dob\": \"2006-05-23T13:28:41.327Z\",\n    \"verified\": false,\n    \"email\": \"dolore do\",\n    \"age\": 42387061\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "/api/Persons",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"occaecat\",\n  \"lastName\": \"consequat commodo ipsum eiusmod dolor\",\n  \"dob\": \"1978-03-30T16:44:29.685Z\",\n  \"verified\": true,\n  \"email\": \"dolor minim voluptate\",\n  \"age\": -46967970\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/Persons",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"Persons"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"firstName\": \"occaecat\",\n  \"lastName\": \"consequat commodo ipsum eiusmod dolor\",\n  \"dob\": \"1978-03-30T16:44:29.685Z\",\n  \"verified\": true,\n  \"email\": \"dolor minim voluptate\",\n  \"age\": -46967970\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/Persons",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"Persons"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": -15936625\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
