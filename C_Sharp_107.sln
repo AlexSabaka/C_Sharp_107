@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_29_HTML_CSS", "Lesso
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_31_HTML_Forms", "Lesson_31_HTML_Forms\Lesson_31_HTML_Forms.csproj", "{AC71C60F-862D-432D-9051-E9523212E306}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson_32_HTTP", "Lesson_32_HTTP\Lesson_32_HTTP.csproj", "{7727E2BD-08C6-4E2A-974A-C4DEBD4B2B1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{AC71C60F-862D-432D-9051-E9523212E306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC71C60F-862D-432D-9051-E9523212E306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC71C60F-862D-432D-9051-E9523212E306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7727E2BD-08C6-4E2A-974A-C4DEBD4B2B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7727E2BD-08C6-4E2A-974A-C4DEBD4B2B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7727E2BD-08C6-4E2A-974A-C4DEBD4B2B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7727E2BD-08C6-4E2A-974A-C4DEBD4B2B1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
