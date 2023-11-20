@@ -18,7 +18,10 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index() => View();
+    public IActionResult Index() {
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+
+    }
 
     public IActionResult Create() => View();
 
@@ -26,3 +29,4 @@ public class HomeController : Controller
     public IActionResult Error()
         => View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 }
+
