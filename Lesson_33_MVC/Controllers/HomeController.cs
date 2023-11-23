@@ -20,10 +20,14 @@ public class HomeController : Controller
 
     public IActionResult Index() {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-
     }
 
     public IActionResult Create() => View();
+
+    public IActionResult Edit([FromQuery] int id)
+    {
+        return View();
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

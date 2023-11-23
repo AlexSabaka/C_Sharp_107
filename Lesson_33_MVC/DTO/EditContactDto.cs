@@ -3,8 +3,11 @@ using AutoMapper.Configuration.Annotations;
 
 namespace Lesson_33_MVC.DTO;
 
-public class CreateContactDto // Data Transfer Object
+public class EditContactDto // Data Transfer Object
 {
+    [Required]
+    public int Id { get; set; }
+
     [Required]
     [MaxLength(100)]
     public string? FirstName { get; set; }

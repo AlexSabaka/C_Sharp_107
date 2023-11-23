@@ -6,44 +6,49 @@ using Lesson_33_MVC.Data;
 using Lesson_33_MVC.Data.Models;
 using Lesson_33_MVC.DTO;
 using Lesson_33_MVC.ViewModels;
+using Lesson_33_MVC.Services.Interfaces;
 
 namespace Lesson_33_MVC.Controllers.Api;
+
+// REST/CRUD API controller for the Contact entity/resource
 
 [ApiController]
 [Route("api/[controller]")]
 public class ContactsController : ControllerBase
 {
     private readonly IMapper _mapper;
-    private readonly AppDbContext _appDbContext;
+    private readonly IContactsBookService _contactsBookService;
     private readonly ILogger<ContactsController> _logger;
 
-    public ContactsController(IMapper mapper, IConfiguration configuration, AppDbContext appDbContext, ILogger<ContactsController> logger)
+    public ContactsController(IMapper mapper, AppDbContext appDbContext, ILogger<ContactsController> logger, IContactsBookService contactsBookService)
     {
         _mapper = mapper;
-        _appDbContext = appDbContext;
         _logger = logger;
 
-        _logger.LogWarning(configuration.GetValue<string>("Var"));
+        _contactsBookService = contactsBookService;
     }
 
     [HttpGet("")]
     [ProducesResponseType(typeof(GetContactDto[]), StatusCodes.Status200OK)]
-    public async Task<IActionResult> AllAsync([FromQuery] int? start = 0, [FromQuery] int? count = 10, CancellationToken cancellationToken = default) => 
-        Ok(await _mapper.ProjectTo<GetContactDto>(
-            _appDbContext.Contacts.Skip(start ?? 0).Take(count ?? 10)
-        ).ToArrayAsync(cancellationToken));
+    public async Task<IActionResult> AllAsync([FromQuery] int start = 0, [FromQuery] int count = 10, CancellationToken cancellationToken = default)
+    {
+        var all = await _contactsBookService.GetAllAsync(cancellationToken);
+        return Ok(all
+            .Skip(start)
+            .Take(count)
+            .Select(
+                c => _mapper.Map<Contact, GetContactDto>(c)
+            )
+            .ToArray()
+        );
+    }
 
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(GetContactDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> ByIdAsync([FromRoute] int id, CancellationToken cancellationToken)
     {
-        var contact = await _appDbContext.Contacts.FindAsync(id, cancellationToken);
-        if (contact is null) {
-            throw new ContactNotFoundException(id);
-        }
-
-        return Ok(_mapper.Map<Contact, GetContactDto>(contact));
+        return Ok(_mapper.Map<Contact, GetContactDto>(await _contactsBookService.GetByIdAsync(id, cancellationToken)));
     }
 
     [HttpGet("{id}/avatar")]
@@ -51,46 +56,35 @@ public class ContactsController : ControllerBase
     [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAvatarAsync([FromRoute] int id, CancellationToken cancellationToken)
     {
-        var contact = await _appDbContext.Contacts
-            .Include(c => c.Avatar)
-            .SingleAsync(c => c.Id == id, cancellationToken);
-
-        if (contact is null || contact?.AvatarId is null)
-        {
-            return NotFound(id);
-        }
-
-        return File(contact.Avatar.ImageData, contact.Avatar.ImageType);
+        var avatar = await _contactsBookService.GetAvatarAsync(id, cancellationToken);
+        return File(avatar.ImageData, avatar.ImageType);
     }
 
     [HttpPost("")]
     [ProducesResponseType(typeof(int), StatusCodes.Status201Created)]
     public async Task<IActionResult> CreateAsync([FromForm] CreateContactDto contactDto, CancellationToken cancellationToken)
     {
-        Avatar? avatar = null;
+        int? avatarId = null;
         if (contactDto.AvatarFile is not null)
         {
-            using var fileStream = contactDto.AvatarFile.OpenReadStream();
-            using var memoryStream = new MemoryStream();
-
-            await fileStream.CopyToAsync(memoryStream);
-
-            var avatarEntity = await _appDbContext.Avatars.AddAsync(new Avatar {
-                ImageType = contactDto.AvatarFile.ContentType,
-                ImageData = memoryStream.ToArray(),
-            });
-
-            await _appDbContext.SaveChangesAsync(cancellationToken);
-
-            avatar = avatarEntity.Entity;
+            avatarId = await _contactsBookService.AddAvatarAsync(contactDto.AvatarFile.OpenReadStream(), contactDto.AvatarFile.ContentType, cancellationToken);
         }
 
-        var contact = _mapper.Map<CreateContactDto, Contact>(contactDto);
-        contact.AvatarId = avatar?.Id;
+        var contact = (Contact)_mapper.Map<CreateContactDto, Contact>(contactDto);
+        contact.AvatarId = avatarId;
 
-        await _appDbContext.Contacts.AddAsync(contact);
-        await _appDbContext.SaveChangesAsync(cancellationToken);
+        await _contactsBookService.AddAsync(contact);
 
         return RedirectToAction("Index", "Home");
+    }
+
+    [HttpPut("")]
+    [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> EditContactAsync([FromForm] EditContactDto contactDto, CancellationToken cancellationToken)
+    {
+        var contact = _mapper.Map<EditContactDto, Contact>(contactDto);
+        return await _contactsBookService.EditAsync(contact, cancellationToken)
+            ? Ok(contact.Id) : StatusCode(500);
     }
 }
