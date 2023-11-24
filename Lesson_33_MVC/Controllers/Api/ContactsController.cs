@@ -79,9 +79,10 @@ public class ContactsController : ControllerBase
     }
 
     [HttpPut("")]
+    [Consumes("application/json")]
     [ProducesResponseType(typeof(int), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> EditContactAsync([FromForm] EditContactDto contactDto, CancellationToken cancellationToken)
+    public async Task<IActionResult> EditContactAsync([FromBody] EditContactDto contactDto, CancellationToken cancellationToken)
     {
         var contact = _mapper.Map<EditContactDto, Contact>(contactDto);
         return await _contactsBookService.EditAsync(contact, cancellationToken)
